@@ -9,11 +9,11 @@ namespace WeekDayWebApplication.Models
     public class CalculateModel
     {
         [Required]
-        public string Day { get; set; }
+        public int? Day { get; set; }
         [Required]
-        public string Month { get; set; }
+        public int? Month { get; set; }
         [Required]
-        public string Year { get; set; }
+        public int? Year { get; set; }
 
         public string Message { get; set; }
     }

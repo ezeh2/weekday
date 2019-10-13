@@ -12,7 +12,13 @@ namespace WeekDayWebApplication.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            DateTime dt = DateTime.Now;
+            CalculateModel calculateModel = new CalculateModel();
+            calculateModel.Message = "Bitte geben Sie ein Datum ein.";
+            calculateModel.Day = dt.Day;
+            calculateModel.Month = dt.Month;
+            calculateModel.Year = dt.Year;
+            return View("Index", calculateModel);
         }
 
         [HttpPost]
@@ -21,6 +27,24 @@ namespace WeekDayWebApplication.Controllers
             if (!this.ModelState.IsValid)
             {
                 calculateModel.Message = "invalid";
+            }
+            else
+            {
+                try
+                {
+                    DateTime dt = new DateTime(calculateModel.Year.GetValueOrDefault(0),
+                        calculateModel.Month.GetValueOrDefault(0),
+                        calculateModel.Day.GetValueOrDefault(0)
+                        );
+
+
+                    DayOfWeek dow = dt.DayOfWeek;
+                    calculateModel.Message = dow.ToString();
+                }
+                catch (ArgumentException ex)
+                {
+                    calculateModel.Message = ex.Message;
+                }
             }
 
             return View("Index", calculateModel);
