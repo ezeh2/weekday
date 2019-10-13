@@ -18,7 +18,12 @@ namespace WeekDayWebApplication.Controllers
         [HttpPost]
         public IActionResult Calculate(CalculateModel calculateModel)
         {
-            return View("Index");
+            if (!this.ModelState.IsValid)
+            {
+                calculateModel.Message = "invalid";
+            }
+
+            return View("Index", calculateModel);
         }
 
         public IActionResult About()
