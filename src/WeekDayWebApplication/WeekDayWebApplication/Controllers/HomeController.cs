@@ -16,7 +16,7 @@ namespace WeekDayWebApplication.Controllers
         }
 
         [HttpPost]
-        public IActionResult Calculate(string day, string month, string year)
+        public IActionResult Calculate(CalculateModel calculateModel)
         {
             return View("Index");
         }
