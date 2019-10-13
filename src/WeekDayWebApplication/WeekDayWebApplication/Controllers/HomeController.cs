@@ -15,6 +15,12 @@ namespace WeekDayWebApplication.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Calculate(string day, string month, string year)
+        {
+            return View("Index");
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

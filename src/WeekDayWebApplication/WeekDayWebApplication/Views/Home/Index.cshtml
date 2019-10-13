@@ -4,3 +4,21 @@
 <h2>@ViewData["Title"]</h2>
 
 
+<form method="POST" action="/Home/Calculate">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Tag</label>
+        <input type="number" class="form-control" name="day" id="day" aria-describedby="" placeholder="Tag" min="1" max="31">
+        <small id="emailHelp" class="form-text text-muted">.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Monat</label>
+        <input type="number" class="form-control" name="month" id="month" aria-describedby="" placeholder="Monat" min="1" max="12">
+        <small id="emailHelp" class="form-text text-muted">.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Jahr</label>
+        <input type="number" class="form-control" name="year" id="year" aria-describedby="" placeholder="Jahr" min="1900">
+        <small id="emailHelp" class="form-text text-muted">.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

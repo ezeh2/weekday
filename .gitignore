@@ -3,3 +3,7 @@
 ################################################################################
 
 /src/WeekDayWebApplication/.vs/WeekDayWebApplication/v16
+/src/WeekDayWebApplication/.vs
+/src/WeekDayWebApplication/WeekDayWebApplication/bin
+/src/WeekDayWebApplication/WeekDayWebApplication/obj
+
