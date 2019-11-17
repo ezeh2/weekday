@@ -23,9 +23,16 @@ namespace WeekDayWebApplication
             // https://developer.mozilla.org/de/docs/Web/HTTP/Headers/X-Content-Type-Options
             context.HttpContext.Response.Headers.Add("X-Content-Type-Options"
                 , new Microsoft.Extensions.Primitives.StringValues("nosniff"));
+
             // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+            // allow content from:
+            //  'self'
+            //  stackpath.bootstrapcdn.com
+            //  ajax.aspnetcdn.com
+            // 
+            // 'unsafe-inline' is needed for <link  asp-fallback-href="..." asp-fallback-test-class="..."  />
             context.HttpContext.Response.Headers.Add("Content-Security-Policy"
-                , new Microsoft.Extensions.Primitives.StringValues("default-src 'self' 'unsafe-eval' 'unsafe-inline';"));
+                , new Microsoft.Extensions.Primitives.StringValues("default-src 'self' stackpath.bootstrapcdn.com ajax.aspnetcdn.com 'unsafe-eval' 'unsafe-inline';"));
         }
     }
 }
