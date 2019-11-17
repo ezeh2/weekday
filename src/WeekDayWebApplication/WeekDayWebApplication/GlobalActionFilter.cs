@@ -33,6 +33,8 @@ namespace WeekDayWebApplication
             // 'unsafe-inline' is needed for <link  asp-fallback-href="..." asp-fallback-test-class="..."  />
             context.HttpContext.Response.Headers.Add("Content-Security-Policy"
                 , new Microsoft.Extensions.Primitives.StringValues("default-src 'self' stackpath.bootstrapcdn.com ajax.aspnetcdn.com 'unsafe-eval' 'unsafe-inline';"));
+
+            // Strict-Transport-Security: already configured with IApplicationBuilder.UseHsts();
         }
     }
 }
