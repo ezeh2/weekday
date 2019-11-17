@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnv
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -44,7 +46,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - WeekDayWebApplication</p>
+            <p>&copy; 2019 - WeekDayWebApplication (Stage: @hostingEnv.EnvironmentName)</p>
         </footer>
     </div>
 
