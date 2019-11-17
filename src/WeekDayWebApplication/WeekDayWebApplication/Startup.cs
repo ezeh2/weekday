@@ -47,6 +47,11 @@ namespace WeekDayWebApplication
 
             app.UseRouting();
 
+            CookiePolicyOptions cpo = new CookiePolicyOptions();
+            cpo.HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.Always;
+            cpo.Secure = Microsoft.AspNetCore.Http.CookieSecurePolicy.Always;
+            app.UseCookiePolicy();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
