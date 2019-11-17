@@ -24,12 +24,8 @@ namespace WeekDayWebApplication
             context.HttpContext.Response.Headers.Add("X-Content-Type-Options"
                 , new Microsoft.Extensions.Primitives.StringValues("nosniff"));
             // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
-            /*
-            Refused to load the stylesheet 'https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css' 
-            because it violates the following Content Security Policy directive: "default-src 'self'". 
-            Note that 'style-src-elem' was not explicitly set, so 'default-src' is used as a fallback.            */
-            // context.HttpContext.Response.Headers.Add("Content-Security-Policy"
-            //    , new Microsoft.Extensions.Primitives.StringValues("script-src ajax.aspnetcdn.com stackpath.bootstrapcdn.com;"));
+            context.HttpContext.Response.Headers.Add("Content-Security-Policy"
+                , new Microsoft.Extensions.Primitives.StringValues("default-src 'self' 'unsafe-eval' 'unsafe-inline';"));
         }
     }
 }
