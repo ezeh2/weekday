@@ -9,6 +9,16 @@
  * Requires the Javascript MD5 library, available here: http://pajhome.org.uk/crypt/md5
  */
 
+$(document).ready(function () {
+
+    // onsubmit="setTimeout('GenerateToTextField()', 0); return false;"
+    $('#generate').on("click", function (event) {
+        GenerateToTextField();        
+    });
+
+    Init();
+});
+
 /*
  * Initialize page with default hashing parameters.
  */
