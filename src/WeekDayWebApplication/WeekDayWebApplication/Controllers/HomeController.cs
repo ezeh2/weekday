@@ -50,6 +50,11 @@ namespace WeekDayWebApplication.Controllers
             return View("Index", calculateModel);
         }
 
+        public IActionResult PwdHash()
+        {
+            return View("PwdHash");
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

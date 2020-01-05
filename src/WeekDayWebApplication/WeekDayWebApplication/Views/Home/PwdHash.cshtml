@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Enter a date";
+}
+<div class="container">
+    <h2>PwdHash</h2>
+
+    <div class="alert alert-primary" role="alert">
+    </div>
+
+    <form name="hashform" method="POST" onsubmit="setTimeout('GenerateToTextField()', 0); return false;">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <label for="theSiteDomain">Site Address</label>
+            <input type="text" class="form-control" name="domain" id="theSiteDomain" aria-describedby="" placeholder="http://www.example.com/" min="1" max="31">
+            <small id="emailHelp" class="form-text text-muted">.</small>
+        </div>
+        <div class="form-group">
+            <label for="theSitePassword">Site Password</label>
+            <input type="password" class="form-control" name="sitePassword" id="theSitePassword" aria-describedby="" placeholder="" min="1" max="12">
+            <small id="emailHelp" class="form-text text-muted">.</small>
+        </div>
+        <div class="form-group">
+            <label for="theHashedPassword">Hashed Password</label>
+            <input type="text" readonly="readonly" class="form-control" name="hashedPassword" id="theHashedPassword" aria-describedby="">
+            <small id="emailHelp" class="form-text text-muted">.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate</button>
+    </form>
+</div>
+
+<script src="~/js/md5.js" type="text/javascript"></script>
+<script src="~/js/pwdhash.js" type="text/javascript"></script>
+<script src="~/js/hashed-password.js" type="text/javascript"></script>
+<script src="~/js/domain-extractor.js" type="text/javascript"></script>
+<script type="text/javascript">
+    Init();
+</script>
