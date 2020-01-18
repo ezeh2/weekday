@@ -11,9 +11,11 @@
 
 $(document).ready(function () {
 
-    // onsubmit="setTimeout('GenerateToTextField()', 0); return false;"
     $('#generate').on("click", function (event) {
-        GenerateToTextField();        
+        ButtonClick_Generate();        
+    });
+    $('#generateAndCopyToClipboard').on("click", function (event) {
+        ButtonClick_GenerateAndCopyToClipboard();
     });
 
     Init();
@@ -48,7 +50,22 @@ function Generate() {
 /*
  * Obtain a conforming hashed password and put it in the hashed password field
  */
-function GenerateToTextField() {
+function ButtonClick_Generate() {
     document.hashform.hashedPassword.value = Generate();
     document.hashform.hashedPassword.disabled = false;
+}
+
+function ButtonClick_GenerateAndCopyToClipboard() {
+    document.hashform.hashedPassword.value = Generate();
+    document.hashform.hashedPassword.disabled = false;
+
+    var copyText = document.getElementById("theHashedPassword");
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+    document.hashform.hashedPassword.value = '';
+
 }
