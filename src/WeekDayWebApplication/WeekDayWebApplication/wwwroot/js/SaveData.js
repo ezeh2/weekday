@@ -8,7 +8,7 @@
         var data = $('#data').val();
 
         $.ajax({
-            'url': '/Home/SaveData',
+            'url': '/Data/SaveData',
             'data': {
                 'data': data
             },

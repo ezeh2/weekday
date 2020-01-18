@@ -75,31 +75,6 @@ namespace WeekDayWebApplication.Controllers
             return View();
         }
 
-        public IActionResult SaveData()
-        {
-            string cd = Directory.GetCurrentDirectory();
-            ViewData["CurrentDirectory"] = cd;
-            ViewData["RequestPath"] = this.Request.Path.Value;
-
-            using (FileStream fs = System.IO.File.Open("SaveData.txt", FileMode.Append))
-            {
-                using(StreamWriter sw = new StreamWriter(fs))
-                {
-                    sw.WriteLine($"### {DateTime.Now.ToString("yyyy-MM-dd HH:mm.s")}");
-                    foreach(string key in this.Request.Query.Keys)
-                    {
-                        string value = this.Request.Query[key];
-                        sw.WriteLine(key);
-                        sw.WriteLine(value);
-                        sw.WriteLine("===");
-                    }
-                    sw.WriteLine("###");
-                }
-            }
-
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
