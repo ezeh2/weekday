@@ -19,6 +19,6 @@ following response-header is added:
 
 This has to be configured in web.config because JS- and CSS-Files are served directly by IIS outside of the ASP.NET MVC.
 
-https://developer.mozilla.org/de/docs/Web/HTTP/Headers/Cache-Control
-https://docs.microsoft.com/en-us/iis/configuration/system.webserver/staticcontent/clientcache
+(Mozilla Cache Control)[https://developer.mozilla.org/de/docs/Web/HTTP/Headers/Cache-Control]
+(Microsoft Client Cache)[https://docs.microsoft.com/en-us/iis/configuration/system.webserver/staticcontent/clientcache]
 
