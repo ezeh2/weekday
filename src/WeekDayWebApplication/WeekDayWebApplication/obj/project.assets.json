@@ -1,42 +1,36 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.0": {}
+    "net8.0": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.0": []
+    "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ezeh\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/home/edward/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ezeh\\source\\repos\\weekday\\src\\WeekDayWebApplication\\WeekDayWebApplication\\WeekDayWebApplication.csproj",
+      "projectUniqueName": "/home/edward/work/repos/weekday/src/WeekDayWebApplication/WeekDayWebApplication/WeekDayWebApplication.csproj",
       "projectName": "WeekDayWebApplication",
-      "projectPath": "C:\\Users\\ezeh\\source\\repos\\weekday\\src\\WeekDayWebApplication\\WeekDayWebApplication\\WeekDayWebApplication.csproj",
-      "packagesPath": "C:\\Users\\ezeh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ezeh\\source\\repos\\weekday\\src\\WeekDayWebApplication\\WeekDayWebApplication\\obj\\",
+      "projectPath": "/home/edward/work/repos/weekday/src/WeekDayWebApplication/WeekDayWebApplication/WeekDayWebApplication.csproj",
+      "packagesPath": "/home/edward/.nuget/packages/",
+      "outputPath": "/home/edward/work/repos/weekday/src/WeekDayWebApplication/WeekDayWebApplication/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ezeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/edward/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.0"
+        "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "c:\\nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.0": {
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -44,17 +38,24 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
-      "netcoreapp3.0": {
+      "net8.0": {
+        "targetAlias": "net8.0",
         "imports": [
           "net461",
           "net462",
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -66,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/snap/dotnet-sdk/256/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
