@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,9 +21,26 @@ namespace WeekDayWebApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews(options =>
+            services.AddControllersWithViews();
+
+            services.AddAntiforgery(options =>
             {
-                options.Filters.Add(new GlobalActionFilter());
+                options.Cookie.HttpOnly = true;
+                options.Cookie.SameSite = SameSiteMode.Strict;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            });
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.HttpOnly = HttpOnlyPolicy.Always;
+                options.MinimumSameSitePolicy = SameSiteMode.Strict;
+                options.Secure = CookieSecurePolicy.Always;
+            });
+
+            services.AddHsts(options =>
+            {
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(365);
             });
         }
 
@@ -39,17 +54,34 @@ namespace WeekDayWebApplication
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
+
+            app.Use(async (context, next) =>
+            {
+                context.Response.OnStarting(() =>
+                {
+                    var headers = context.Response.Headers;
+                    headers["X-Frame-Options"] = "DENY";
+                    headers["X-Content-Type-Options"] = "nosniff";
+                    headers["Referrer-Policy"] = "no-referrer";
+                    headers["Permissions-Policy"] = "camera=(), geolocation=(), microphone=()";
+                    headers["Content-Security-Policy"] =
+                        "default-src 'self'; base-uri 'self'; object-src 'none'; " +
+                        "frame-ancestors 'none'; form-action 'self'; " +
+                        "script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'";
+                    headers.Remove("X-Powered-By");
+                    return Task.CompletedTask;
+                });
+
+                await next();
+            });
+
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            CookiePolicyOptions cpo = new CookiePolicyOptions();
-            cpo.HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.Always;
-            cpo.Secure = Microsoft.AspNetCore.Http.CookieSecurePolicy.Always;
             app.UseCookiePolicy();
 
             app.UseAuthorization();

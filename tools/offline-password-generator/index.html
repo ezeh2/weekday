@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Offline password generator</title>
+    <style>
+        body { max-width: 44rem; margin: 2rem auto; padding: 0 1rem; font: 16px/1.5 system-ui, sans-serif; }
+        label { display: block; margin-top: 1rem; font-weight: 650; }
+        input { display: block; width: 100%; box-sizing: border-box; padding: .7rem; margin-top: .3rem; }
+        button { margin: 1rem .5rem 0 0; padding: .65rem 1rem; }
+        .warning { padding: 1rem; background: #fff3cd; border: 1px solid #e3c768; }
+        .status { min-height: 1.5rem; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <h1>Offline password generator</h1>
+    <p class="warning">Version 2 is not compatible with passwords produced by the legacy PwdHash algorithm.</p>
+    <form id="passwordGenerator" novalidate>
+        <label for="theSiteDomain">Site address</label>
+        <input id="theSiteDomain" type="url" value="https://www.example.com/" required>
+        <label for="theSitePassword">Master password</label>
+        <input id="theSitePassword" type="password" minlength="12" maxlength="1024" autocomplete="new-password" required>
+        <label for="theHashedPassword">Derived password</label>
+        <input id="theHashedPassword" type="password" readonly>
+        <button id="generate" type="submit">Generate</button>
+        <button id="copy" type="button" disabled>Copy</button>
+        <button id="toggleVisibility" type="button" disabled>Show</button>
+        <p id="generatorStatus" class="status" role="status" aria-live="polite"></p>
+    </form>
+    <script src="../../src/WeekDayWebApplication/WeekDayWebApplication/wwwroot/js/password-generator.js"></script>
+    <script src="../../src/WeekDayWebApplication/WeekDayWebApplication/wwwroot/js/password-generator-ui.js"></script>
+</body>
+</html>

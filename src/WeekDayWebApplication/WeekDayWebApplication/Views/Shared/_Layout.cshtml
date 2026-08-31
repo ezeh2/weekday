@@ -7,28 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WeekDayWebApplication</title>
 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WeekDayWebApplication</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="PwdHash">PwdHash</a></li>
-                    <li><a asp-area="" asp-controller="Data" asp-action="Index">Save data using ajax</a></li>
-                    <li><a asp-area="" asp-controller="Data" asp-action="ShowData">Show saved data</a></li>
-                </ul>
+    <nav class="site-nav" aria-label="Main navigation">
+        <div class="container nav-content">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="brand">WeekDayWebApplication</a>
+            <div class="nav-links">
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-area="" asp-controller="Home" asp-action="PwdHash">Password generator</a>
+                <a asp-area="" asp-controller="Data" asp-action="Index">Save data</a>
+                <a asp-area="" asp-controller="Data" asp-action="ShowData">Show saved data</a>
             </div>
         </div>
     </nav>
@@ -39,12 +28,10 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019,2020 - WeekDayWebApplication (Stage: @hostingEnv.EnvironmentName, Last change 2020-01-18)</p>
+            <p>&copy; 2019-@DateTime.UtcNow.Year - WeekDayWebApplication (Stage: @hostingEnv.EnvironmentName)</p>
         </footer>
     </div>
 
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
