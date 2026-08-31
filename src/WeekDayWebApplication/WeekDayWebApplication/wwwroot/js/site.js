@@ -1,4 +1,13 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿"use strict";
 
-// Write your JavaScript code.
+document.addEventListener("DOMContentLoaded", () => {
+    const consentButton = document.querySelector("#cookieConsent button[data-cookie-string]");
+    if (!consentButton) {
+        return;
+    }
+
+    consentButton.addEventListener("click", () => {
+        document.cookie = consentButton.dataset.cookieString;
+        document.querySelector("#cookieConsent")?.classList.add("hidden");
+    });
+});

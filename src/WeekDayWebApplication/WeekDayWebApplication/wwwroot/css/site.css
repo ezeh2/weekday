@@ -1,37 +1,103 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
-for details on configuring this project to bundle and minify static web assets. */
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+:root {
+    color-scheme: light;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    color: #172033;
+    background: #f5f7fb;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+* { box-sizing: border-box; }
+body { margin: 0; background: #f5f7fb; }
+a { color: #0759b8; }
+
+.container {
+    width: min(100% - 2rem, 70rem);
+    margin-inline: auto;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+.narrow { max-width: 46rem; }
+
+.site-nav {
+    padding: 0.9rem 0;
+    background: #172033;
+    color: white;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
+.nav-content,
+.nav-links,
+.button-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.nav-content { justify-content: space-between; }
+.site-nav a { color: white; text-decoration: none; }
+.brand { font-weight: 700; }
+.body-content { padding-block: 2rem; }
+.form-group { margin-bottom: 1rem; }
+
+label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 650;
+}
+
+.form-control {
+    display: block;
     width: 100%;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #9aa5b8;
+    border-radius: 0.35rem;
+    background: white;
+    color: #172033;
+    font: inherit;
 }
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
+.form-control:focus {
+    outline: 3px solid #9bc6ff;
+    border-color: #0759b8;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+.form-text,
+.text-muted { color: #596579; }
+
+.btn {
+    display: inline-block;
+    padding: 0.65rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.35rem;
+    font: inherit;
+    font-weight: 650;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary { background: #0759b8; color: white; }
+.btn-secondary { border-color: #7e899b; background: white; color: #172033; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.alert {
+    margin: 1rem 0;
+    padding: 0.9rem 1rem;
+    border-radius: 0.35rem;
+}
+
+.alert-primary { background: #dcecff; border: 1px solid #9bc6ff; }
+.alert-warning { background: #fff3cd; border: 1px solid #e3c768; }
+.text-danger { color: #a11a22; }
+.status { min-height: 1.5rem; font-weight: 600; }
+
+.cookie-consent {
+    padding: 1rem 0;
+    background: #fff3cd;
+    border-bottom: 1px solid #e3c768;
+}
+
+.hidden { display: none !important; }
+footer { margin-top: 3rem; color: #596579; }
+
+@media (max-width: 42rem) {
+    .nav-content { align-items: flex-start; flex-direction: column; }
 }

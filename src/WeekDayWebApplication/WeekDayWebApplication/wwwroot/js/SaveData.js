@@ -1,26 +1,24 @@
-﻿$(document).ready(function () {
+﻿"use strict";
 
-    $('#send').on("click", function (event) {
-        Send();
-    });
+document.addEventListener("DOMContentLoaded", () => {
+    const sendButton = document.querySelector("#send");
+    const dataInput = document.querySelector("#data");
 
-    function Send() {
-        var data = $('#data').val();
-
-        $.ajax({
-            'url': '/Data/SaveData',
-            'data': {
-                'data': data
-            },
-            'method': 'GET',
-            'cache': false,
-            'success': function (data, textStatus, jqXHR) {
-                console.log('success');
-            },
-            'error': function (jqXHR, textStatus, errorThrown) {
-                console.log('error');
-            }
-        });
+    if (!sendButton || !dataInput) {
+        return;
     }
-});
 
+    sendButton.addEventListener("click", async () => {
+        const url = new URL("/Data/SaveData", window.location.origin);
+        url.searchParams.set("data", dataInput.value);
+
+        try {
+            const response = await fetch(url, { cache: "no-store" });
+            if (!response.ok) {
+                throw new Error(`Request failed with status ${response.status}.`);
+            }
+        } catch (error) {
+            console.error("Unable to save data.", error);
+        }
+    });
+});
